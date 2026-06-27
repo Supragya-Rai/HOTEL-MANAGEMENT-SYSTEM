@@ -1,196 +1,116 @@
-# Hotel Management System
+# 🏨 Hotel Management System
 
-## Overview
+A console-based **Hotel Management System** developed in **Java** using **JDBC** and **MySQL**. This project allows users to manage hotel room reservations through a menu-driven interface and demonstrates CRUD operations with a relational database.
 
-A console-based Hotel Management System developed using Java, JDBC, and MySQL. This application allows hotel staff to manage reservations through a simple menu-driven interface. The project demonstrates database connectivity, CRUD operations, SQL query execution, and basic database management using JDBC.
+## 🚀 Features
 
----
+* ➕ Create a new reservation
+* 📋 View all reservations
+* ✏️ Update an existing reservation
+* ❌ Delete a reservation
+* 🔍 Get reservation details by ID
+* 💾 Data stored in a MySQL database
+* 🔒 Uses **PreparedStatement** to prevent SQL Injection attacks
 
-## Features
-
-### Reservation Management
-
-* Create a new reservation
-* View all reservations
-* Update existing reservations
-* Delete reservations
-* Search reservation details by Reservation ID
-
-### Database Operations
-
-* MySQL database integration using JDBC
-* Insert, Read, Update, and Delete (CRUD) functionality
-* Automatic reservation date tracking
-* Persistent data storage
-
-### Additional Functionality
-
-* Menu-driven console interface
-* Input validation
-* Database connectivity handling
-* Load testing experiments using multithreading
-
----
-
-## Tech Stack
+## 🛠️ Technologies Used
 
 * Java
-* JDBC (Java Database Connectivity)
+* JDBC
 * MySQL
 * IntelliJ IDEA
+* MySQL Connector/J
 
----
+## 📂 Project Structure
 
-## Database Schema
-
-### Database
-
-```sql
-CREATE DATABASE hotel_data;
 ```
-
-### Reservations Table
-
-```sql
-CREATE TABLE reservations (
-    reservation_Id INT AUTO_INCREMENT PRIMARY KEY,
-    room_no INT NOT NULL,
-    cust_Name VARCHAR(100) NOT NULL,
-    mob_No VARCHAR(15) NOT NULL,
-    aadhaar_No VARCHAR(20) NOT NULL,
-    reservation_Date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-);
-```
-
----
-
-## Project Structure
-
-```text
 HotelManagementSystem/
-│
-├── hotelManagement.java
-├── database.sql
-├── README.md
-└── mysql-connector-j.jar
+│── src/
+│   └── hotelManagement.java
+│── README.md
 ```
 
----
+## 🗄️ Database
 
-## Installation and Setup
+Database Name:
 
-### 1. Clone the Repository
-
-```bash
-[git clone <repository-url>
-cd HotelManagementSystem](https://github.com/Supragya-Rai/HOTEL-MANAGEMENT-SYSTEM.git)
+```
+hotel_data
 ```
 
-### 2. Create the Database
+Table:
 
-Open MySQL and execute:
-
-```sql
-CREATE DATABASE hotel_data;
-
-USE hotel_data;
-
-CREATE TABLE reservations (
-    reservation_Id INT AUTO_INCREMENT PRIMARY KEY,
-    room_no INT NOT NULL,
-    cust_Name VARCHAR(100) NOT NULL,
-    mob_No VARCHAR(15) NOT NULL,
-    aadhaar_No VARCHAR(20) NOT NULL,
-    reservation_Date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-);
+```
+reservations
 ```
 
-### 3. Configure Database Credentials
+Example columns:
 
-Update the following values in the source code:
+* reservation_Id
+* cust_Name
+* room_no
+* mob_No
+* aadhaar_No
+* reservation_Date
+
+## ⚙️ How to Run
+
+1. Clone the repository.
+2. Create the MySQL database and the `reservations` table.
+3. Update the database credentials in the source code.
 
 ```java
-public static final String url =
-        "jdbc:mysql://localhost:3306/hotel_data";
-
-public static final String username = "root";
-public static final String password = "Supragya2006";
+String url = "jdbc:mysql://localhost:3306/hotel_data";
+String username = "your_username";
+String password = "your_password";
 ```
 
-### 4. Add MySQL JDBC Driver
+4. Add the MySQL JDBC Driver to the project.
+5. Run `hotelManagement.java`.
 
-Add MySQL Connector/J to your project dependencies.
+## 📌 Menu
 
-### 5. Run the Application
-
-Execute:
-
-```bash
-java hotelManagement
 ```
-
----
-
-## Menu Options
-
-```text
 1. New Reservation
 2. View Reservations
-3. Update Reservations
-4. Delete Reservations
-5. Get Details
+3. Update Reservation
+4. Delete Reservation
+5. Get Reservation Details
 0. Exit
 ```
 
----
+## 🔒 Security Improvement
 
-## Sample Output
+This project originally used the JDBC `Statement` interface. It has now been upgraded to use **PreparedStatement** for all database operations.
 
-```text
-Welcome to Hotel Management System!!!
+Benefits of using `PreparedStatement`:
 
-1. New Reservation
-2. View Reservations
-3. Update Reservations
-4. Delete Reservations
-5. Get Details
-0. Exit
+* Protects against SQL Injection attacks
+* Executes parameterized queries safely
+* Improves code readability
+* Can improve performance when executing similar queries repeatedly
 
-Enter Your Choice:
-```
+## 📚 JDBC Concepts Demonstrated
 
----
-
-## Learning Outcomes
-
-This project helped in understanding:
-
-* JDBC Architecture
-* MySQL Database Integration
-* SQL Queries
+* JDBC Driver Loading
+* Database Connection
+* PreparedStatement
+* ResultSet
 * CRUD Operations
 * Exception Handling
-* Java Multithreading
-* Database Load Testing
-* Connection Management
+* Menu-driven Console Application
 
----
+## 🎯 Future Improvements
 
-## Future Improvements
-
-* PreparedStatement implementation
-* User authentication system
 * Room availability checking
-* Check-in and Check-out management
-* Payment module
-* Spring Boot REST API
-* Web-based frontend
-* Connection pooling using HikariCP
-* Role-based access control
-* Docker deployment
+* Input validation for mobile number and Aadhaar
+* Search reservations by customer name
+* Login/Admin authentication
+* Billing and invoice generation
+* Layered architecture using DAO
+* Spring Boot REST API version
 
----
+## 👨‍💻 Author
 
-## Author
+**Supragya Rai**
 
-Developed by Supragya Rai as a Java JDBC project to learn database connectivity and backend development concepts.
+If you found this project helpful, feel free to ⭐ the repository.
